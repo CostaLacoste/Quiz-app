@@ -9,7 +9,7 @@ type Props = {
     totalQuestions: number;
 }
 
-const QueationCard: React.FC<Props> = ({ question, answers, callback, userAnswer, questionNr, totalQuestions }) => {
+const QuestionCard: React.FC<Props> = ({ question, answers, callback, userAnswer, questionNr, totalQuestions }) => {
     <div>
         <p className='number'>
             Question: {questionNr} / {totalQuestions}
@@ -17,8 +17,8 @@ const QueationCard: React.FC<Props> = ({ question, answers, callback, userAnswer
         <p dangerouslySetInnerHTML={{__html: question}} />
         <div>
             {answers.map(answer => (
-                <div>
-                    <button disabled={userAnswer} onClick={callback}>
+                <div key={answer}>
+                    <button disabled={userAnswer} value={answer} onClick={callback}>
                         <span dangerouslySetInnerHTML={{__html:answer}} />
                     </button>
                 </div>
@@ -27,4 +27,4 @@ const QueationCard: React.FC<Props> = ({ question, answers, callback, userAnswer
     </div>
 }
 
-export default QueationCard
+export default QuestionCard
