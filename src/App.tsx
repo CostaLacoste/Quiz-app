@@ -3,7 +3,7 @@ import { fetchQuizQuestions } from './API';
 import QuestionCard from './Components/QuestionCard';
 import { QuestionState, Difficulty } from './API';
 
-type AnswerObject = {
+export type AnswerObject = {
   question: string;
   answer: string;
   correct: boolean;
@@ -70,7 +70,7 @@ const App = () => {
       {gameOver || userAnswers.length === TOTAL_QUESTIONS ? (
       <button className='start' onClick={startTrivia}>Start</button>
       ) : null}
-      {!gameOver ? <p className='score'>Score:</p> : null}
+      {!gameOver ? <p className='score'>Score: {score}</p> : null}
       {loading && <p>Loading questions...</p>}
       {!loading && !gameOver && (
       <QuestionCard
